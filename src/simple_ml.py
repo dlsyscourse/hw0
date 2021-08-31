@@ -42,8 +42,8 @@ def parse_mnist(image_filesname, label_filename):
                 should be normalized to have a minimum value of 0.0 and a
                 maximum value of 1.0.
 
-            y (numpy.ndarray[dypte=np.int8]): 1D numpy array containing the
-                labels of the examples.  Values should be of type np.int8 and
+            y (numpy.ndarray[dypte=np.uint8]): 1D numpy array containing the
+                labels of the examples.  Values should be of type np.uint8 and
                 for MNIST will contain the values 0-9.
     """
     ### BEGIN YOUR CODE
