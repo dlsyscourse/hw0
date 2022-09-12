@@ -83,7 +83,7 @@ def softmax_regression_epoch(X, y, theta, lr = 0.1, batch=100):
             (num_examples x input_dim).
         y (np.ndarray[np.uint8]): 1D class label array of size (num_examples,)
         theta (np.ndarrray[np.float32]): 2D array of softmax regression
-            parameter, of shape (input_dim, num_classes)
+            parameters, of shape (input_dim, num_classes)
         lr (float): step size (learning rate) for SGD
         batch (int): size of SGD minibatch
 
@@ -107,9 +107,9 @@ def nn_epoch(X, y, W1, W2, lr = 0.1, batch=100):
         X (np.ndarray[np.float32]): 2D input array of size
             (num_examples x input_dim).
         y (np.ndarray[np.uint8]): 1D class label array of size (num_examples,)
-        W1 (np.ndarrray[np.float32]): 2D array of first layer weights, of shape
+        W1 (np.ndarray[np.float32]): 2D array of first layer weights, of shape
             (input_dim, hidden_dim)
-        W2 (np.ndarrray[np.float32]): 2D array of second layer weights, of shape
+        W2 (np.ndarray[np.float32]): 2D array of second layer weights, of shape
             (hidden_dim, num_classes)
         lr (float): step size (learning rate) for SGD
         batch (int): size of SGD minibatch
