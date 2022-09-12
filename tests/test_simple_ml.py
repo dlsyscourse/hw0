@@ -37,6 +37,10 @@ def test_parse_mnist():
     assert X.shape == (60000,784)
     assert y.shape == (60000,)
     np.testing.assert_allclose(np.linalg.norm(X[:10]), 27.892084)
+    np.testing.assert_allclose(np.linalg.norm(X[:1000]), 293.0717,
+        err_msg="""If you failed this test but not the previous one,
+        you are probably normalizing incorrectly. You should normalize
+        w.r.t. the whole dataset, _not_ individual images.""")
     np.testing.assert_equal(y[:10], [5, 0, 4, 1, 9, 2, 1, 3, 1, 4])
 
 
