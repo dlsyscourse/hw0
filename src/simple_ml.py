@@ -24,7 +24,7 @@ def add(x, y):
     ### END YOUR CODE
 
 
-def parse_mnist(image_filesname, label_filename):
+def parse_mnist(image_filename, label_filename):
     """ Read an images and labels file in MNIST format.  See this page:
     http://yann.lecun.com/exdb/mnist/ for a description of the file format.
 
@@ -42,7 +42,7 @@ def parse_mnist(image_filesname, label_filename):
                 should be normalized to have a minimum value of 0.0 and a
                 maximum value of 1.0.
 
-            y (numpy.ndarray[dypte=np.uint8]): 1D numpy array containing the
+            y (numpy.ndarray[dtype=np.uint8]): 1D numpy array containing the
                 labels of the examples.  Values should be of type np.uint8 and
                 for MNIST will contain the values 0-9.
     """
@@ -97,7 +97,7 @@ def softmax_regression_epoch(X, y, theta, lr = 0.1, batch=100):
 def nn_epoch(X, y, W1, W2, lr = 0.1, batch=100):
     """ Run a single epoch of SGD for a two-layer neural network defined by the
     weights W1 and W2 (with no bias terms):
-        logits = ReLU(X * W1) * W1
+        logits = ReLU(X * W1) * W2
     The function should use the step size lr, and the specified batch size (and
     again, without randomizing the order of X).  It should modify the
     W1 and W2 matrices in place.

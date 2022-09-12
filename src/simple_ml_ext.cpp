@@ -22,7 +22,7 @@ void softmax_regression_epoch_cpp(const float *X, const unsigned char *y,
      *     y (const unsigned char *): pointer to y data, of size m
      *     theta (foat *): pointer to theta data, of size n*k, stored in row
      *          major (C) format
-     *     m (size_t): number of exmaples
+     *     m (size_t): number of examples
      *     n (size_t): input dimension
      *     k (size_t): number of classes
      *     lr (float): learning rate / SGD step size
