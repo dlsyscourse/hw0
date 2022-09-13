@@ -24,7 +24,7 @@ def add(x, y):
     ### END YOUR CODE
 
 
-def parse_mnist(image_filesname, label_filename):
+def parse_mnist(image_filename, label_filename):
     """ Read an images and labels file in MNIST format.  See this page:
     http://yann.lecun.com/exdb/mnist/ for a description of the file format.
 
@@ -34,15 +34,16 @@ def parse_mnist(image_filesname, label_filename):
 
     Returns:
         Tuple (X,y):
-            X (numpy.ndarray[np.float32]): 2D numpy array containing the loaded
-                data.  The dimensionality of the data should be
-                (num_examples x input_dim) where 'input_dim' is the full
-                dimension of the data, e.g., since MNIST images are 28x28, it
-                will be 784.  Values should be of type np.float32, and the data
-                should be normalized to have a minimum value of 0.0 and a
-                maximum value of 1.0.
+            X (numpy.ndarray[np.float32]): 2D numpy array containing the loaded 
+                data.  The dimensionality of the data should be 
+                (num_examples x input_dim) where 'input_dim' is the full 
+                dimension of the data, e.g., since MNIST images are 28x28, it 
+                will be 784.  Values should be of type np.float32, and the data 
+                should be normalized to have a minimum value of 0.0 and a 
+                maximum value of 1.0. The normalization should be applied uniformly
+                across the whole dataset, _not_ individual images.
 
-            y (numpy.ndarray[dypte=np.uint8]): 1D numpy array containing the
+            y (numpy.ndarray[dtype=np.uint8]): 1D numpy array containing the
                 labels of the examples.  Values should be of type np.uint8 and
                 for MNIST will contain the values 0-9.
     """
@@ -82,7 +83,7 @@ def softmax_regression_epoch(X, y, theta, lr = 0.1, batch=100):
             (num_examples x input_dim).
         y (np.ndarray[np.uint8]): 1D class label array of size (num_examples,)
         theta (np.ndarrray[np.float32]): 2D array of softmax regression
-            parameter, of shape (input_dim, num_classes)
+            parameters, of shape (input_dim, num_classes)
         lr (float): step size (learning rate) for SGD
         batch (int): size of SGD minibatch
 
@@ -97,7 +98,7 @@ def softmax_regression_epoch(X, y, theta, lr = 0.1, batch=100):
 def nn_epoch(X, y, W1, W2, lr = 0.1, batch=100):
     """ Run a single epoch of SGD for a two-layer neural network defined by the
     weights W1 and W2 (with no bias terms):
-        logits = ReLU(X * W1) * W1
+        logits = ReLU(X * W1) * W2
     The function should use the step size lr, and the specified batch size (and
     again, without randomizing the order of X).  It should modify the
     W1 and W2 matrices in place.
@@ -106,9 +107,9 @@ def nn_epoch(X, y, W1, W2, lr = 0.1, batch=100):
         X (np.ndarray[np.float32]): 2D input array of size
             (num_examples x input_dim).
         y (np.ndarray[np.uint8]): 1D class label array of size (num_examples,)
-        W1 (np.ndarrray[np.float32]): 2D array of first layer weights, of shape
+        W1 (np.ndarray[np.float32]): 2D array of first layer weights, of shape
             (input_dim, hidden_dim)
-        W2 (np.ndarrray[np.float32]): 2D array of second layer weights, of shape
+        W2 (np.ndarray[np.float32]): 2D array of second layer weights, of shape
             (hidden_dim, num_classes)
         lr (float): step size (learning rate) for SGD
         batch (int): size of SGD minibatch
