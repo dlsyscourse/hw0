@@ -97,7 +97,20 @@ def softmax_regression_epoch(X, y, theta, lr = 0.1, batch=100):
         None
     """
     ### BEGIN YOUR CODE
-    pass
+    current_begin_index = 0
+    while(current_begin_index <= X.shape[0] - batch):
+        batch_X = X[current_begin_index:current_begin_index+batch, :]
+        batch_y = y[current_begin_index:current_begin_index+batch]
+        Z = np.dot(batch_X, theta)
+        exp_z = np.exp(Z)
+        Z = exp_z / np.sum(exp_z, axis=1)[:, np.newaxis]
+        zeros = np.zeros_like(Z)
+        zeros[range(zeros.shape[0]), batch_y] = 1
+        I_y = zeros
+        temp = Z-I_y
+        loss_gradient = 1 / batch * np.transpose(batch_X) @ temp
+        theta[:, :] = theta - lr * loss_gradient
+        current_begin_index += batch
     ### END YOUR CODE
 
 
@@ -168,6 +181,24 @@ def train_nn(X_tr, y_tr, X_te, y_te, hidden_dim = 500,
         print("|  {:>4} |    {:.5f} |   {:.5f} |   {:.5f} |  {:.5f} |"\
               .format(epoch, train_loss, train_err, test_loss, test_err))
 
+def test_softmax_by_L():
+    X_tr, y_tr = parse_mnist("data/train-images-idx3-ubyte.gz", 
+                         "data/train-labels-idx1-ubyte.gz")
+    X_te, y_te = parse_mnist("data/t10k-images-idx3-ubyte.gz",
+                            "data/t10k-labels-idx1-ubyte.gz")
+
+    train_softmax(X_tr, y_tr, X_te, y_te, epochs=10, lr=0.2, batch=100)
+# %%
+import sys
+sys.path.append("src/")
+from simple_ml import train_softmax, parse_mnist
+X_tr, y_tr = parse_mnist("data/train-images-idx3-ubyte.gz", 
+                        "data/train-labels-idx1-ubyte.gz")
+X_te, y_te = parse_mnist("data/t10k-images-idx3-ubyte.gz",
+                        "data/t10k-labels-idx1-ubyte.gz")
+
+train_softmax(X_tr, y_tr, X_te, y_te, epochs=10, lr=0.2, batch=100)
+# %%
 
 
 if __name__ == "__main__":
